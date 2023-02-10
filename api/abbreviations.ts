@@ -19,10 +19,10 @@ type Abbreviation = {
 
 export default async (req: Request, res: Response) => {
   const searchParams = new URLSearchParams(req.url.split('?')[1])
-  const word = searchParams.get('word')
+  const term = searchParams.get('term')
 
   const markup = await fetch(
-    `https://www.abbreviations.com/${word}`
+    `https://www.abbreviations.com/abbreviation/${term}`
   ).then((res) => res.text())
 
   const doc = await parse(markup)
